@@ -1,1 +1,1 @@
-web: gunicor project4.wsgi
+web: gunicorn p4-gianncarlo.wsgi
