@@ -1,9 +1,8 @@
 from django.urls import path
-
-from . import views
+from django.urls import include, path
 
 app_name = 'reservations'
 
 urlpatterns = [
-    # Define your app's URL patterns here
+    path('reservations/', include('reservations.urls')),
 ]
