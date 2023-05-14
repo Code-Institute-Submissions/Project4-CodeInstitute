@@ -28,8 +28,10 @@ class Reservations(models.Model):
     ReservationDate = models.DateField()
     ReservationTime = models.TimeField()
 
+    objects = ReservationsManager()
+
     def clean(self):
-        # Check if there is an existing reservation for the selected table 
+        # Check if there is an existing reservation for the selected table
         # and time slot
         existing_reservation = Reservations.objects.filter(
             TableID=self.TableID,
