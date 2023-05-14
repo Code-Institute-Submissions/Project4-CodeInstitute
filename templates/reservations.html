@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <h1>Reservations</h1>
-    <ul>
-{% for reservation in reservations_list %}
-    
-    <li>{{ reservation }}</li>
-
-{% endfor %}
-    </ul>
-
+    {% for reservation in reservations_list %}
+        <strong>Reservation #: {{ reservation.ReservationID }}</strong>
+        <br/>
+        Name: {{ reservation.UserID.Name }}
+        <br/>
+        Date: {{ reservation.ReservationDate }}
+        <br/>
+        <!-- Time: {{ reservation.TimeslotID.StartTime }}
+        <br/>-->
+        Reservation time: {{ reservation.ReservationTime }}
+        <br/>
+        <br/>
+    {% endfor %}
 {% endblock %}
