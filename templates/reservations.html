@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Reservations</h1>
+
+    <h1>Reservations</h1>
+    <ul>
+{% for reservation in reservations_list %}
+    
+    <li>{{ reservation }}</li>
+
+{% endfor %}
+    </ul>
+
 {% endblock %}

@@ -21,5 +21,7 @@ import reservations.views
 urlpatterns = [
     path('', reservations.views.index, name='index'),
     path('admin/', admin.site.urls),
+    path('reservations/', reservations.views.reservations,
+         name='reservations'),
     # path('reservations/', include('reservations.urls')),
 ]
