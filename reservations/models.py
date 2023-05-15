@@ -26,13 +26,12 @@ class Reservations(models.Model):
     TimeslotID = models.ForeignKey('Timeslots', on_delete=models.CASCADE)
     NumOfGuests = models.IntegerField()
     ReservationDate = models.DateField()
-    ReservationTime = models.TimeField()
 
     objects = ReservationsManager()
 
     def clean(self):
         # Check if there is an existing reservation for the selected table
-        # and time slot
+        # and timeslot
         existing_reservation = Reservations.objects.filter(
             TableID=self.TableID,
             TimeslotID=self.TimeslotID
@@ -63,7 +62,7 @@ class Tables(models.Model):
     MaxCapacity = models.IntegerField()
 
     def __str__(self):
-        return f"Table ID: {self.TableID}"
+        return f"Table #: {self.TableID}"
 
 
 class Timeslots(models.Model):
@@ -72,4 +71,4 @@ class Timeslots(models.Model):
     EndTime = models.TimeField()
 
     def __str__(self):
-        return f"Timeslot ID: {self.TimeslotID}"
+        return f"{self.StartTime} - {self.EndTime}"
