@@ -1,18 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Reservations</h1>
-    {% for reservation in reservations_list %}
-        <strong>Reservation #: {{ reservation.ReservationID }}</strong>
-        <br/>
-        Name: {{ reservation.UserID.Name }}
-        <br/>
-        Date: {{ reservation.ReservationDate }}
-        <br/>
-        <!-- Time: {{ reservation.TimeslotID.StartTime }}
-        <br/>-->
-        Reservation time: {{ reservation.ReservationTime }}
-        <br/>
-        <br/>
-    {% endfor %}
+<h1>Reservations</h1>
+
+{% for reservation in reservations_list %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h3 class="card-title">Reservation #: {{ reservation.ReservationID }}</h3>
+    </div>
+    <ul class="list-group list-group-flush"> 
+        <li class="list-group-item">
+            Name: {{ reservation.UserID.Name }}
+        </li>
+        <li class="list-group-item">
+            Date: {{ reservation.ReservationDate }}
+        </li>
+        <li class="list-group-item">
+            Reservation time: {{ reservation.ReservationTime }}
+        </li>
+        <li class="list-group-item">
+            # of Guests: {{ reservation.NumOfGuests }}
+        </li>
+        <!-- Time: {{ reservation.TimeslotID.StartTime }} -->
+    </ul>
+    <div class="card-body">
+        <a href="#" class="btn btn-primary">Update</a>
+        <a href="#" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endfor %}
+
 {% endblock %}
