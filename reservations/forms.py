@@ -1,5 +1,5 @@
 from django import forms
-from django.forms impor ModelForm
+from django.forms import ModelForm
 from .models import Users
 
 # Create a new user

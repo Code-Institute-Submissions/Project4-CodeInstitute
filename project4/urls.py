@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservations/', reservations.views.reservations,
          name='reservations'),
+    path('signup/', reservations.views.signup, name='signup')
     # path('reservations/', include('reservations.urls')),
 ]
