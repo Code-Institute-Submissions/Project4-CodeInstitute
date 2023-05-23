@@ -12,5 +12,6 @@ def reservations(request):
     return render(request, 'reservations.html',
                   {'reservations_list': reservations_list})
 
+
 def signup(request):
-    return render(request, 'signup.html',{})
+    return render(request, 'signup.html', {})
