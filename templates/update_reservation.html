@@ -1,36 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Reservations</h1>
-<div class="row">
-        {% for reservation in reservations_list %}
+    <h1>Update Resevation</h1>
+    <br/>
+    <div class="row">
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Reservation #: {{ reservation.ReservationID }}</h4>
                 </div>
-                <ul class="list-group list-group-flush"> 
+                <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         Name: {{ reservation.UserID.Name }}
                     </li>
                     <li class="list-group-item">
-                        Date: {{ reservation.ReservationDate }}
-                    </li>
-                    <li class="list-group-item">
-                        Reservation time: {{ reservation.TimeslotID.StartTime }}
-                    </li>
-                    <li class="list-group-item">
-                        # of Guests: {{ reservation.NumOfGuests }}
+                        <form action="" method=POST>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" value="Update" class="btn btn-primary">
+                        </form>
                     </li>
                     <!-- Time: {{ reservation.TimeslotID.StartTime }} -->
                 </ul>
                 <div class="card-body">
-                    <a href="{% url 'update-reservation' reservation.ReservationID %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'reservations' %}" class="btn btn-warning">Back</a>
                     <a href="#" class="btn btn-danger">Delete</a>
                 </div>
-            </br>
+                </br>
             </div>
         </div>
-        {% endfor %}
-</div>
+    </div>
 {% endblock %}

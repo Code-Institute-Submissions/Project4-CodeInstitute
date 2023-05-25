@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Reservations
-from .forms import UsersForm
+from .forms import UsersForm, UpdateForm
 from django.http import HttpResponseRedirect
 
 
@@ -10,7 +10,8 @@ def index(request):
 
 def reservations(request):
     reservations_list = Reservations.objects.all()
-    return render(request, 'reservations.html',
+    return render(request, 
+                  'reservations.html',
                   {'reservations_list': reservations_list})
 
 
@@ -28,3 +29,14 @@ def signup(request):
 
     return render(request, 'signup.html', {'form': form,
                                            'submitted': submitted})
+
+
+def update_reservation(request, reservation_id):
+    reservation = Reservations.objects.get(pk=reservation_id)
+    form = UpdateForm(request.POST or None, instance=reservation)
+    if form.is_valid():
+        form.save()
+        return redirect('reservations')
+    return render(request,
+                  'update_reservation.html',
+                  {'reservation': reservation, 'form': form})
