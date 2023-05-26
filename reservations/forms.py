@@ -32,9 +32,18 @@ class UpdateForm(ModelForm):
         to_field_name='StartTime',
     )
 
+    RestaurantID = forms.ModelChoiceField(
+        queryset=Restaurants.objects.all(),
+        empty_label=None,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Restaurant',
+        to_field_name='Name'
+    )
+
     class Meta:
         model = Reservations
-        fields = ('ReservationDate', 'TimeslotID', 'NumOfGuests')
+        fields = ('RestaurantID','ReservationDate',
+                  'TimeslotID', 'NumOfGuests')
         labels = {
             'ReservationDate': 'Reservation Date',
             'NumOfGuests': '# of Guest',
