@@ -9,7 +9,8 @@ def index(request):
 
 
 def reservations(request):
-    reservations_list = Reservations.objects.all()
+    reservations_list = Reservations.objects.all().order_by('ReservationDate',
+                                                            'TimeslotID')
     return render(request,
                   'reservations.html',
                   {'reservations_list': reservations_list})
