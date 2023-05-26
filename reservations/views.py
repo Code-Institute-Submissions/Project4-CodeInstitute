@@ -47,7 +47,7 @@ def create_reservation(request):
         form = CreateReservation(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('./')
+            return HttpResponseRedirect('./?submitted=True')
     else:
         form = CreateReservation
         if 'submitted' in request.GET:

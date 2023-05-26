@@ -66,7 +66,7 @@ class CreateReservation(ModelForm):
     TimeslotID = forms.ModelChoiceField(
         queryset=Timeslots.objects.all(),
         empty_label=None,
-        widget=forms.Select(attrs={'class': 'form-control'}),
+        widget=forms.Select(attrs={'class': 'form-select'}),
         label='Reservation Time',
         to_field_name='StartTime',
     )
@@ -91,16 +91,14 @@ class CreateReservation(ModelForm):
 
         widgets = {
             'RestaurantId':
-            forms.TextInput(attrs={'class': 'form-control',
-                                   'placeholder': 'Enter your email'}),
+            forms.Select(attrs={'class': 'form-control'}),
             'ReservationDate':
             forms.DateInput(attrs={'class': 'form-control',
-                                   'placeholder': 'Date'}),
+                                   'placeholder': 'YYYY-MM-DD'}),
             'TimeslotID':
             forms.TimeInput(attrs={'class': 'form-control',
                                     'placeholder': 'Time'}),
             'NumOfGuests':
-            forms.NumberInput(attrs={'min': '1', 'max': '4',
-                                     'class': 'form-control',
-                                     'placeholder': '# of Guests'}),
+            forms.NumberInput(attrs={'min': '1', 'max': '10',
+                                     'class': 'form-control'}),
         }
