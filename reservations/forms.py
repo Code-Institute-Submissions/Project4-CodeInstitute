@@ -42,7 +42,7 @@ class UpdateForm(ModelForm):
 
     class Meta:
         model = Reservations
-        fields = ('RestaurantID','ReservationDate',
+        fields = ('RestaurantID', 'ReservationDate',
                   'TimeslotID', 'NumOfGuests')
         labels = {
             'ReservationDate': 'Reservation Date',
@@ -61,6 +61,7 @@ class UpdateForm(ModelForm):
                                      'class': 'form-control',
                                      'placeholder': '# of Guests'}),
         }
+
 
 # Create a new reservation
 class CreateReservation(ModelForm):
@@ -106,7 +107,7 @@ class CreateReservation(ModelForm):
                                    'placeholder': 'YYYY-MM-DD'}),
             'TimeslotID':
             forms.TimeInput(attrs={'class': 'form-control',
-                                    'placeholder': 'Time'}),
+                                   'placeholder': 'Time'}),
             'NumOfGuests':
             forms.NumberInput(attrs={'min': '1', 'max': '10',
                                      'class': 'form-control'}),

@@ -15,9 +15,12 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <button href="{% url 'index' %}/admin" class="btn btn-outline-success" type="submit">
+                <a type="button" href="{% url 'signup' %}" class="btn btn-outline-success">
+                    Sign up
+                </a>
+                <a type="button" href="{% url 'login' %}" class="btn btn-outline-primary">
                     Log in
-                </button>
+                </a>
             </form>
         </div>
     </div>

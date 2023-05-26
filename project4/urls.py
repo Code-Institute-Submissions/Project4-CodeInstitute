@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 import reservations.views
+import members.views
 
 
 urlpatterns = [
@@ -34,5 +35,7 @@ urlpatterns = [
     path('delete_reservation/<reservation_id>',
          reservations.views.delete_reservation,
          name='delete-reservation'),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls')),
     # path('reservations/', include('reservations.urls')),
 ]
