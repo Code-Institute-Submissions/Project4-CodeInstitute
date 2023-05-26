@@ -31,5 +31,8 @@ urlpatterns = [
     path('create_reservation/',
          reservations.views.create_reservation,
          name='create-reservation'),
+    path('delete_reservation/<reservation_id>',
+         reservations.views.delete_reservation,
+         name='delete-reservation'),
     # path('reservations/', include('reservations.urls')),
 ]

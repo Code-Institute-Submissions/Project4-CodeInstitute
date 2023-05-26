@@ -5,6 +5,14 @@
     <br/>
     {% if submitted %}
         Your Reservation was created Succefully!
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <a href="{% url 'reservations' %}" class="btn btn-warning">Back</a>
+                    </br>
+                </div>
+            </div>
+        </div>
     {% else %}
     
         <div class="row">

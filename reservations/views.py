@@ -10,7 +10,7 @@ def index(request):
 
 def reservations(request):
     reservations_list = Reservations.objects.all()
-    return render(request, 
+    return render(request,
                   'reservations.html',
                   {'reservations_list': reservations_list})
 
@@ -41,6 +41,7 @@ def update_reservation(request, reservation_id):
                   'update_reservation.html',
                   {'reservation': reservation, 'form': form})
 
+
 def create_reservation(request):
     submitted = False
     if request.method == "POST":
@@ -54,4 +55,10 @@ def create_reservation(request):
             submitted = True
 
     return render(request, 'create_reservation.html', {'form': form,
-                                           'submitted': submitted})
+                                                       'submitted': submitted})
+
+
+def delete_reservation(request, reservation_id):
+    reservation = Reservations.objects.get(pk=reservation_id)
+    reservation.delete()
+    return redirect('reservations')

@@ -32,7 +32,7 @@
                     </ul>
                     <div class="card-body">
                         <a href="{% url 'update-reservation' reservation.ReservationID %}" class="btn btn-primary">Update</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'delete-reservation' reservation.ReservationID %}" class="btn btn-danger">Delete</a>
                     </div>
                 </br>
                 </div>
