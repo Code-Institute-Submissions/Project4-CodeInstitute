@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Reservations
-from .forms import UsersForm, UpdateForm
+from .forms import UsersForm, UpdateForm, CreateReservation
 from django.http import HttpResponseRedirect
 
 
@@ -40,3 +40,18 @@ def update_reservation(request, reservation_id):
     return render(request,
                   'update_reservation.html',
                   {'reservation': reservation, 'form': form})
+
+def create_reservation(request):
+    submitted = False
+    if request.method == "POST":
+        form = CreateReservation(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('./')
+    else:
+        form = CreateReservation
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'create_reservation.html', {'form': form,
+                                           'submitted': submitted})

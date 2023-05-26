@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Users, Reservations, Timeslots
+from .models import Users, Reservations, Timeslots, Restaurants
 
 
 # Create a new user
@@ -51,4 +51,56 @@ class UpdateForm(ModelForm):
             forms.NumberInput(attrs={'min': '1', 'max': '4',
                                      'class': 'form-control',
                                      'placeholder': '# of Guests'}),
-            }
+        }
+
+# Create a new reservation
+class CreateReservation(ModelForm):
+    RestaurantID = forms.ModelChoiceField(
+        queryset=Restaurants.objects.all(),
+        empty_label=None,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Restaurant',
+        to_field_name='Name'
+    )
+
+    TimeslotID = forms.ModelChoiceField(
+        queryset=Timeslots.objects.all(),
+        empty_label=None,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Reservation Time',
+        to_field_name='StartTime',
+    )
+
+    UserID = forms.ModelChoiceField(
+        queryset=Users.objects.all(),
+        empty_label=None,
+        widget=forms.Select(attrs={'class': 'form-control'}),
+        label='Name',
+        to_field_name='Name'
+    )
+
+    class Meta:
+        model = Reservations
+        fields = ('UserID', 'RestaurantID', 
+                  'ReservationDate', 'TimeslotID',
+                  'NumOfGuests')
+        labels = {
+            'ReservationDate': 'Date',
+            'NumOfGuests': '# of Guest',
+        }
+
+        widgets = {
+            'RestaurantId':
+            forms.TextInput(attrs={'class': 'form-control',
+                                   'placeholder': 'Enter your email'}),
+            'ReservationDate':
+            forms.DateInput(attrs={'class': 'form-control',
+                                   'placeholder': 'Date'}),
+            'TimeslotID':
+            forms.TimeInput(attrs={'class': 'form-control',
+                                    'placeholder': 'Time'}),
+            'NumOfGuests':
+            forms.NumberInput(attrs={'min': '1', 'max': '4',
+                                     'class': 'form-control',
+                                     'placeholder': '# of Guests'}),
+        }

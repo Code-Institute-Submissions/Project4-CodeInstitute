@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Users, Reservations, Restaurants, Tables, Timeslots
+from .models import Users, Reservations, Restaurants, Timeslots
 
 
 admin.site.register(Timeslots)
@@ -27,9 +27,3 @@ class RestaurantsAdmin(admin.ModelAdmin):
     ordering = ('Name',)
     list_filter = ('Name', 'Address')
 
-
-@admin.register(Tables)
-class TablesAdmin(admin.ModelAdmin):
-    list_display = ('RestaurantID', 'TableID', 'MaxCapacity')
-    ordering = ('MaxCapacity',)
-    list_filter = ('RestaurantID__Name', 'MaxCapacity')

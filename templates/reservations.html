@@ -1,36 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Reservations</h1>
-<div class="row">
-        {% for reservation in reservations_list %}
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Reservation #: {{ reservation.ReservationID }}</h4>
-                </div>
-                <ul class="list-group list-group-flush"> 
-                    <li class="list-group-item">
-                        Name: {{ reservation.UserID.Name }}
-                    </li>
-                    <li class="list-group-item">
-                        Date: {{ reservation.ReservationDate }}
-                    </li>
-                    <li class="list-group-item">
-                        Reservation time: {{ reservation.TimeslotID.StartTime }}
-                    </li>
-                    <li class="list-group-item">
-                        # of Guests: {{ reservation.NumOfGuests }}
-                    </li>
-                    <!-- Time: {{ reservation.TimeslotID.StartTime }} -->
-                </ul>
-                <div class="card-body">
-                    <a href="{% url 'update-reservation' reservation.ReservationID %}" class="btn btn-primary">Update</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
-                </div>
-            </br>
-            </div>
+    <h1>Reservations</h1>
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'create-reservation' %}" class="btn btn-success">Create a new Reservation</a>
         </div>
-        {% endfor %}
-</div>
+    </div>
+    </br>
+    <div class="row">
+            {% for reservation in reservations_list %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Reservation #: {{ reservation.ReservationID }}</h4>
+                    </div>
+                    <ul class="list-group list-group-flush"> 
+                        <li class="list-group-item">
+                            Name: {{ reservation.UserID.Name }}
+                        </li>
+                        <li class="list-group-item">
+                            Date: {{ reservation.ReservationDate }}
+                        </li>
+                        <li class="list-group-item">
+                            Reservation time: {{ reservation.TimeslotID.StartTime }}
+                        </li>
+                        <li class="list-group-item">
+                            # of Guests: {{ reservation.NumOfGuests }}
+                        </li>
+                        <!-- Time: {{ reservation.TimeslotID.StartTime }} -->
+                    </ul>
+                    <div class="card-body">
+                        <a href="{% url 'update-reservation' reservation.ReservationID %}" class="btn btn-primary">Update</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </br>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
 {% endblock %}
