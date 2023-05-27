@@ -10,9 +10,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'reservations' %}">Reservations</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-                </li>
             </ul>
             <form class="d-flex">
                 {% if user.is_authenticated %}
@@ -20,7 +17,7 @@
                         Logout
                     </a>
                 {% else %}
-                <a type="button" href="{% url 'signup' %}" class="btn btn-outline-success">
+                <a type="button" href="{% url 'register_user' %}" class="btn btn-outline-success">
                     Sign up
                 </a>
                 <a type="button" href="{% url 'login' %}" class="btn btn-outline-primary">

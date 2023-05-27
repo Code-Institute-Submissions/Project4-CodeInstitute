@@ -25,7 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reservations/', reservations.views.reservations,
          name='reservations'),
-    path('signup/', reservations.views.signup, name='signup'),
     path('update_reservation/<reservation_id>',
          reservations.views.update_reservation,
          name='update-reservation'),
