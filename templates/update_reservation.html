@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if user.is_authenticated %}
     <h1>Update Resevation</h1>
     <br/>
     <div class="row">
@@ -28,4 +29,13 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <h1> Sorry! You must be logged in to view this page. </h1>
+    <a type="button" href="{% url 'register_user' %}" class="btn btn-outline-success">
+        Sign up
+    </a>
+    <a type="button" href="{% url 'login' %}" class="btn btn-outline-primary">
+        Log in
+    </a>
+    {% endif %}
 {% endblock %}

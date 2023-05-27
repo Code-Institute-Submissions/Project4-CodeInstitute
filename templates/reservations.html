@@ -2,6 +2,7 @@
 
 {% block content %}
     <h1>Reservations</h1>
+    {% if user.is_authenticated %}
     <div class="row">
         <div class="col">
             <a href="{% url 'create-reservation' %}" class="btn btn-success">Create a new Reservation</a>
@@ -39,4 +40,13 @@
             </div>
             {% endfor %}
     </div>
+    {% else %}
+    <h1> Sorry! You must be logged in to view this page. </h1>
+    <a type="button" href="{% url 'register_user' %}" class="btn btn-outline-success">
+        Sign up
+    </a>
+    <a type="button" href="{% url 'login' %}" class="btn btn-outline-primary">
+        Log in
+    </a>
+    {% endif %}
 {% endblock %}

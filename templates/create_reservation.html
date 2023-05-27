@@ -1,38 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% if user.is_authenticated %}
     <h1>Create a new reservation</h1>
     <br/>
-    {% if submitted %}
-        Your Reservation was created Succefully!
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 shadow p-3 mb-5 bg-body rounded">
-                <div class="card">
-                    <a href="{% url 'reservations' %}" class="btn btn-warning">Back</a>
-                    </br>
-                </div>
-            </div>
-        </div>
-    {% else %}
-    
-        <div class="row">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 shadow p-3 mb-5 bg-body rounded">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">New Reservation</h4>
+        {% if submitted %}
+            Your Reservation was created Succefully!
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 shadow p-3 mb-5 bg-body rounded">
+                    <div class="card">
+                        <a href="{% url 'reservations' %}" class="btn btn-warning">Back</a>
+                        </br>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <form action="" method=POST>
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <input type="submit" value="Create" class="btn btn-success">
-                            </form>
-                        </li>
-                    </ul>
-                    </br>
                 </div>
             </div>
-        </div>
+        {% else %}
+        
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 shadow p-3 mb-5 bg-body rounded">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">New Reservation</h4>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <form action="" method=POST>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <input type="submit" value="Create" class="btn btn-success">
+                                </form>
+                            </li>
+                        </ul>
+                        </br>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+    <h1> Sorry! You must be logged in to view this page. </h1>
+    <a type="button" href="{% url 'register_user' %}" class="btn btn-outline-success">
+        Sign up
+    </a>
+    <a type="button" href="{% url 'login' %}" class="btn btn-outline-primary">
+        Log in
+    </a>
     {% endif %}
 {% endblock %}
